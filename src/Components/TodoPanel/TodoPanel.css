@@ -65,3 +65,17 @@
     border-bottom: 1px solid black;
     outline: none;
 }
+
+.addItemTextField {
+    text-align: left;
+    /* padding: 2px 4px; */
+    width: 500px;
+    padding: 1px 12px;
+    width: 500px;
+    border: none;
+    font-size: 20px;
+}
+
+.addItemTextField:focus {
+    outline: none;
+}
