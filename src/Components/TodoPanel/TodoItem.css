@@ -1,0 +1,120 @@
+.itemContainer {
+    margin: 2px auto;
+    padding: 10px;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: row;
+}
+
+.itemContainer:hover, .itemContainerFocused{
+    border-bottom: 1px solid grey;
+    padding: 10px 10px 9px 10px;
+    /* margin: 3px auto; */
+}
+
+.item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.item p {
+    margin: 0;
+}
+
+.textarea {    
+    display: block;
+    /* width: auto; */
+    overflow: hidden;
+    resize: none;
+    line-height: 25px;
+    /* border: 1px solid #ccc; */
+    /* font-family: inherit; */
+    font-size: 20px;
+    padding: 1px 12px;
+    width: 500px;
+}
+
+.textareaDone {
+  text-decoration: line-through;
+}
+
+.textarea[contenteditable]:empty::before {
+  /* content: "Placeholder still possible"; */
+  color: gray;
+}
+
+.textarea:focus{
+    outline: none;
+}
+
+.textareaUndone {
+}
+
+/* .textareaUndone[contenteditable]:empty::before {
+  /* content: "Placeholder still possible"; */
+  /* color: gray;
+}
+
+.textareaUndone:focus{
+    outline: none; 
+} */
+
+.icon {
+    /* margin: 2px auto; */
+    /* width: 20px;
+    height: 20px; */
+    /* border-radius: 2px; */
+    cursor: pointer;
+}
+
+.done {
+    /* border: 1px solid red; */
+}
+
+.doneInner {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 2px;
+    transition: opacity 1s;
+    opacity: 1;
+}
+
+.undone {
+    /* border: 1px solid black; */
+}
+
+.undoneInner {
+    /* width: 0px;
+    height: 0px; */
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+.textFieldDone {
+    text-decoration: line-through;
+    border: none;
+}
+
+.textFieldDone:focus{
+    outline: none;
+}
+
+.textFieldUndone{
+    text-decoration: none;
+    border: none;
+}
+
+.textFieldUndone:focus{
+    outline: none;
+}
+
+.remove {
+    cursor: pointer;
+    height: fit-content;
+    width: fit-content;
+    padding: 5px 10px;
+    border-radius: 2px;
+    background: red;
+}

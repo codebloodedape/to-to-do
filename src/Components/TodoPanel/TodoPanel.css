@@ -1,0 +1,56 @@
+.panelContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 4px;
+    min-height: 10px;
+    animation: height 1s linear;
+    max-height: 400px;
+    overflow: auto;
+}
+
+.panelHeader {
+    display: flex;
+    flex-direction: row;
+}
+
+.close {
+    margin: 0 25px;
+    padding: 0px 10px;
+    cursor: pointer;
+}
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+/* .doneItemsContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.undoneItemsContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+} */
+
+.icon {
+    /* margin: 2px auto; */
+    /* width: 20px;
+    height: 20px; */
+    /* border-radius: 2px; */
+    cursor: pointer;
+}
+
+.title {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title:hover, .titleFocused {
+    border-bottom: 1px solid black;
+}
