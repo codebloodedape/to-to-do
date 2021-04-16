@@ -1,23 +1,28 @@
 .panelContainer {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     border-radius: 4px;
     min-height: 10px;
     animation: height 1s linear;
     max-height: 400px;
     overflow: auto;
+    background: white;
 }
 
 .panelHeader {
     display: flex;
     flex-direction: row;
+    padding: 0 22px;
+    align-content: space-between;
+    position: relative;
 }
 
 .close {
-    margin: 0 25px;
     padding: 0px 10px;
     cursor: pointer;
+    position: absolute;
+    right: 10px;
 }
 
 .itemsContainer {
@@ -47,10 +52,16 @@
 }
 
 .title {
-    margin: 0 auto;
-    text-align: center;
+    text-align: left;
+    padding: 2px 4px;
+    width: 90%;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 1px solid #dadada;
 }
 
 .title:hover, .titleFocused {
     border-bottom: 1px solid black;
+    outline: none;
 }

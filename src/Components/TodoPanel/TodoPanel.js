@@ -86,7 +86,12 @@ class TodoPanel extends React.Component {
         // console.log(e)
         const title = e.target.previousElementSibling.innerText
         this.state.list.updateTitle(title)
-        this.props.closePanel(this.state.list)
+        this.setState({
+            list: this.state.list
+        }, () => {
+            this.props.closePanel(this.state.list)
+        })
+        
     }
 
     addTextFocus = (e) => {
@@ -96,6 +101,15 @@ class TodoPanel extends React.Component {
 
     addTextBlur = (e) => {
         e.target.parentNode.parentNode.parentNode.classList.remove('itemContainerFocused')
+    }
+
+    titleChanged = (e) => {
+        const list = {...this.state.list}
+        console.log(e.target.value)
+        list.title = e.target.value
+        this.setState({
+            list
+        })
     }
 
     render() {
@@ -116,9 +130,12 @@ class TodoPanel extends React.Component {
         return (
             <div className='panelContainer'>
                 <br />
+                <br />
                 <div className='panelHeader'>
-                    <span onFocus={this.titleFocus} onBlur={this.titleBlur} autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-                        className={classnames('textarea title')} role="textbox" contentEditable >{this.state.list.title}</span>
+                    {/* <span onFocus={this.titleFocus} onBlur={this.titleBlur} autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                        className={classnames('textarea title')} role="textbox" contentEditable >{this.state.list.title}</span> */}
+                    <input type='text' placeholder='Title' onFocus={this.titleFocus} onBlur={this.titleBlur} autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+                        className={classnames('title')} onChange={this.titleChanged} value={this.state.list.title}></input>
                     <img onClick={this.closeHandler} width="30" height="30" className={classnames('icon', 'close')} src={closeIcon} />
                 </div>
                 <br />

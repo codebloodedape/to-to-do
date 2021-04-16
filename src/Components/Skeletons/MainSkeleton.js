@@ -4,6 +4,7 @@ import { Item } from '../../Models/Item'
 import { Todo } from '../../Models/Todo'
 import './MainSkeleton.css'
 import removeIcon from '../../img/remove.png'
+import addIcon from '../../img/plus.png'
 
 class MainSkeleton extends React.Component {
     static id = 0
@@ -20,13 +21,11 @@ class MainSkeleton extends React.Component {
     }
 
     closePanel = (list) => {
-        // console.log(list === this.state.list)
-        // console.log(this.state.list)
-        // console.log(list)
         const todos = [...this.state.lists]
-        for (let todo of todos) {
-            if (todo.id === list.id) {
-                todo = list
+        for (let i = 0; i < todos.length; i++) {
+            if (todos[i].id === list.id) {
+                todos[i] = list
+                break
             }
         }
         this.setState({
@@ -77,24 +76,31 @@ class MainSkeleton extends React.Component {
             )
         }
         // else {
-            return (
-                <div className='mainBackground'>
+        return (
+            <div className='mainBackground'>
+
+                <div className='tilesContainer'>
                     {
                         this.state.lists.map(list => {
                             return (
                                 <div>
                                     <div className='tile' onClick={() => { this.onTodoSelect(list) }}>{list.title}
-                                        <img draggable="false" onClick={(e) => {this.deleteList(e, list)}} width="30" height="30" className='icon' 
-                                        src={removeIcon} /></div>
+                                        <img draggable="false" onClick={(e) => { this.deleteList(e, list) }} width="30" height="30" className='icon deleteIcon'
+                                            src={removeIcon} /></div>
                                     {/* <img draggable="false" onClick={this.deleteList} width="30" height="30" className='icon' src={removeIcon} /> */}
                                 </div>
                             )
                         })
                     }
-                    <div className='tile' onClick={() => {this.onNewTodoSelect()}}>New</div>
-                    {panel}
+                    <div className='tile' onClick={() => { this.onNewTodoSelect() }}>
+                        <img draggable="false" width="30" height="30" className='icon addIcon' src={addIcon} />
+                    </div>
+                    {/* </div> */}
                 </div>
-            )
+
+                {panel}
+            </div>
+        )
         // }
     }
 }
