@@ -15,6 +15,10 @@ class TodoPanel extends React.Component {
         }
     }
 
+    componentDidMount() {
+        this.addTodoItemField.focus()
+    }
+
     itemToggled = (item) => {
         item.toggle()
         this.setState({
@@ -29,12 +33,12 @@ class TodoPanel extends React.Component {
         })
     }
 
-    addItem = () => {
-        this.state.list.addItem('')
-        this.setState({
-            list: this.state.list
-        })
-    }
+    // addItem = () => {
+    //     this.state.list.addItem('')
+    //     this.setState({
+    //         list: this.state.list
+    //     })
+    // }
 
     titleFocus = (e) => {
         console.log(e)
@@ -50,6 +54,8 @@ class TodoPanel extends React.Component {
         this.state.list.removeItem(id)
         this.setState({
             list: this.state.list
+        }, () => {
+            this.addTodoItemField.focus()
         })
     }
 
@@ -58,12 +64,10 @@ class TodoPanel extends React.Component {
         this.state.list.addItem(e.target.nextElementSibling.children[0].innerText)
         this.setState({
             list: this.state.list
+        }, () => {
+            this.addTodoItemField.innerText = ''
+            this.addTodoItemField.focus()
         })
-        // e.target.parentNode.children.filter(child => {
-        //     if (child) {
-        //         console.log(child)
-        //     }
-        // })
     }
 
     onTextChange = (e) => {
@@ -72,6 +76,7 @@ class TodoPanel extends React.Component {
 
     clearText = (e) => {
         e.target.previousElementSibling.children[0].innerText = ''
+        this.addTodoItemField.focus()
     }
 
     // onTitleChange = (e) => {
@@ -81,13 +86,14 @@ class TodoPanel extends React.Component {
     //     })
     // }
 
-    closeHandler =(e) => {
+    closeHandler = (e) => {
         // console.log(this.state.list)
         // console.log(e)
+        const list = {...this.state.list}
         const title = e.target.previousElementSibling.innerText
-        this.state.list.updateTitle(title)
+        list.updateTitle(title)
         this.setState({
-            list: this.state.list
+            list
         }, () => {
             this.props.closePanel(this.state.list)
         })
@@ -144,7 +150,7 @@ class TodoPanel extends React.Component {
                     <div onFocus={this.textAreaFocus} onBlur={this.textAreaBlur} className='item'>
                     <img onClick={this.addItemHandler} width="30" height="30" className='icon' src={addIcon} />
                         <p><span onFocus={this.addTextFocus} onBlur={this.addTextBlur} autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" className={classnames('textarea', 'textareaUndone')}
-                            role="textbox" contentEditable></span></p>
+                            role="textbox" contentEditable ref={(input) => { this.addTodoItemField = input; }} ></span></p>
                         <img draggable="false" onClick={this.clearText} width="30" height="30" className='icon' src={removeIcon} />
                     </div>
                 </div>

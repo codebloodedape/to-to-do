@@ -62,8 +62,18 @@
     text-align: left;
 }
 
-.deleteIcon {
+.tile:hover {
+    background: #c7c7c7
+}
+
+.deleteIcon {    
     position: absolute;
     top: 10px;
     right: 10px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+.deleteIcon:hover {
+    background: #949494;
 }
